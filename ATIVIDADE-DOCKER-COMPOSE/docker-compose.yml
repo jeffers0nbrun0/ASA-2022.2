@@ -22,7 +22,7 @@ services:                                 #criar os serviços
     restart: always                       #Caso o container pare de funcionar ele irá reiniciar automáticamente
     tty: true                             #Habilita terminal no container criado  
     ports:                                #porta que o container irá executar 
-     - "8001:81"                         #"8000" porta do host, "80" porta do container 
+     - "8001:81"                          #"8000" porta do host, "80" porta do container 
     networks:                             #rede que o container irá funcionar
      - asa-network  
 
