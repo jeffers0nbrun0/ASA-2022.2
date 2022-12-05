@@ -3,7 +3,7 @@ services:                                 #criar os serviços
   web01: 
     build:                                #Vai criar as configurações definidas de um dockerfile
       context: ./conf-web01               #busca dentro da pasta "conf-web01"
-      dockerfile: Dockerfile1             #seleciona o arquivo dockerfile com as informações do container
+      dockerfile: Dockerfile              #seleciona o arquivo dockerfile com as informações do container
     image: web01                          #Imagem do servidor Docker        
     container_name: web01                 #Nome do container que será criado
     restart: always                       #Caso o container pare de funcionar ele irá reiniciar automáticamente
@@ -25,7 +25,7 @@ services:                                 #criar os serviços
   web03: 
     build:                                #Vai criar as configurações definidas de um dockerfile
       context: ./conf-web03               #busca dentro da pasta "conf-web01"
-      dockerfile: Dockerfile1             #seleciona o arquivo dockerfile com as informações do container
+      dockerfile: Dockerfile              #seleciona o arquivo dockerfile com as informações do container
     image: web03                          #Imagem do servidor Docker        
     container_name: web03                 #Nome do container que será criado
     restart: always                       #Caso o container pare de funcionar ele irá reiniciar automáticamente
@@ -36,7 +36,7 @@ services:                                 #criar os serviços
   proxy: 
     build:                                #Vai criar as configurações definidas de um dockerfile
       context: ./conf-proxy               #busca dentro da pasta "conf-web01"
-      dockerfile: Dockerfile1             #seleciona o arquivo dockerfile com as informações do container
+      dockerfile: Dockerfile              #seleciona o arquivo dockerfile com as informações do container
     image: proxy                          #Imagem do servidor Docker        
     container_name: proxy                 #Nome do container que será criado
     restart: always                       #Caso o container pare de funcionar ele irá reiniciar automáticamente
