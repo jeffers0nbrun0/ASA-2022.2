@@ -12,7 +12,7 @@ $TTL	604800
 @	IN  MX 10 mail.asa.br.
 @	IN	NS	ns1.asa.br.
 ;@	IN	NS	ns2.asa.br.
-@	IN	A	127.0.0.1
+@	IN	A	10.25.2.99
 @	IN	AAAA	::1
 
 ns1			A	10.25.2.99  ;alterar para ip da máquina local
@@ -21,7 +21,7 @@ mail		A 	10.25.2.99  ;alterar para ip da máquina local
 www			CNAME	ns1
 ;
 ;Delegação de zona
-nsrn		IN 	A 10.25.2.133
+nsrn		IN 	A 10.25.1.133
 ;
 $ORIGIN rn.asa.br.
 $TTL 1D
