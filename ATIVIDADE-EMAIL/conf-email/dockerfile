@@ -1,7 +1,7 @@
-FROM Debian9:latest
+FROM zeyyqyjssectphsfzm/debian9
 RUN apt update
-RUN apt upgrade
-RUN apt-get install certbot python-certbot-nginx
-RUN certbot certonly --standalone -d mail.asa.br
-RUN apt-get install postfix
-RUN apt-get install dovecot-common dovecot-imapd
+RUN apt upgrade -y
+RUN apt-get install certbot python-certbot-nginx -y
+#RUN certbot certonly --standalone -d mail.asa.br -y
+RUN apt-get install postfix -y
+RUN apt-get install dovecot-common dovecot-imapd -y
