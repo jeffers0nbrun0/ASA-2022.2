@@ -4,14 +4,26 @@ RUN apt update
 
 RUN apt upgrade -y
 
-RUN apt install postfix vim dnsutils iputils-ping telnet -y
+RUN apt install postfix nano dnsutils iputils-ping telnet dovecot-common dovecot-imapd dovecot-pop3d -y
 
 COPY main.cf /etc/postfix
 
-# Add User
-#RUN useradd -c 'User Bob' -m -s /bin/false bob
+COPY 10-mail.conf /etc/dovecot/conf.d
 
-# Set user passord
-#RUN echo -e "pwd123" | passwd bob
+COPY 20-pop3.conf /etc/dovecot/conf.d
+
+COPY dovecot.conf /etc/dovecot
+
+# Add User
+RUN useradd -c 'vinicius' -m -s /bin/false vinicius
+
+ #Set user passord
+RUN echo "vinicius:123456"|chpasswd
+
+RUN useradd -c 'jefferson' -m -s /bin/false jefferson
+
+RUN echo "jefferson:123456"|chpasswd
 
 CMD ["postfix", "start-fg"]
+
+#CMD ["service", "dovecot", "start"]  
