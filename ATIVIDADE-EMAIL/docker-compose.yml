@@ -2,10 +2,10 @@ version: '3'
 services:                                 #criar os serviços
   web01: 
     build:                                #Vai criar as configurações definidas de um dockerfile
-      context: ./conf-web01               #busca dentro da pasta "conf-web01"
+      context: ./conf-webemail               #busca dentro da pasta "conf-web01"
       dockerfile: Dockerfile              #seleciona o arquivo dockerfile com as informações do container
-    image: web01                          #Imagem do servidor Docker        
-    container_name: web01                 #Nome do container que será criado
+    image: webemail                          #Imagem do servidor Docker        
+    container_name: webemail                 #Nome do container que será criado
     restart: always                       #Caso o container pare de funcionar ele irá reiniciar automáticamente
     tty: true                             #Habilita terminal no container criado  
     volumes:                              #criar volume
