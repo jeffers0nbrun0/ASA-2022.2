@@ -1,4 +1,15 @@
-FROM nginx:latest
-COPY index.html /usr/share/nginx/html/index.html
-COPY nginx.conf /etc/gninx/nginx.conf
-COPY default.conf /etc/nginx/conf.d/default.conf
+FROM debian:buster
+
+RUN apt-get update && apt-get install -y apache2 apache2-utils libapache2-mod-php php php-cli php-curl php-xml php-imap nano 
+
+RUN apt-get upgrade -y
+
+COPY ./rainloop /var/www/html/
+
+COPY script02.sh .
+
+RUN service apache2 start 
+
+#RUN chmod 777 script02
+
+#RUN ./script02.sh

@@ -30,4 +30,6 @@ CMD ["postfix", "start-fg"]
 
 COPY script01.sh .
 
-RUN ./script01.sh 
+#CMD ["chmod", "777", "script01"]
+
+#RUN ./script01.sh 

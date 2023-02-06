@@ -2,14 +2,12 @@ version: '3'
 services:                                 #criar os serviços
   web01: 
     build:                                #Vai criar as configurações definidas de um dockerfile
-      context: ./conf-webemail               #busca dentro da pasta "conf-web01"
+      context: ./conf-web01               #busca dentro da pasta "conf-web01"
       dockerfile: Dockerfile              #seleciona o arquivo dockerfile com as informações do container
-    image: webemail                          #Imagem do servidor Docker        
-    container_name: webemail                 #Nome do container que será criado
+    image: web01                          #Imagem do servidor Docker        
+    container_name: web01                #Nome do container que será criado
     restart: always                       #Caso o container pare de funcionar ele irá reiniciar automáticamente
-    tty: true                             #Habilita terminal no container criado  
-    volumes:                              #criar volume
-      - ./rainloop/rainloop:/var/www/html/rainloop                             
+    tty: true                             #Habilita terminal no container criado                             
     networks:                             #rede que o container irá funcionar
      - asa-network
 
@@ -20,7 +18,9 @@ services:                                 #criar os serviços
     image: web02                          #Imagem do servidor Docker        
     container_name: web02                 #Nome do container que será criado
     restart: always                       #Caso o container pare de funcionar ele irá reiniciar automáticamente
-    tty: true                             #Habilita terminal no container criado   
+    tty: true
+    volumes:                              #criar volume
+      - ./rainloop/rainloop:/var/www/html/rainloop                                #Habilita terminal no container criado   
     networks:                             #rede que o container irá funcionar
      - asa-network  
   
