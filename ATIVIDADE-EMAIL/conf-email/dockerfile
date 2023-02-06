@@ -6,17 +6,6 @@ RUN apt upgrade -y
 
 RUN apt install postfix nano dnsutils wget iputils-ping telnet dovecot-common dovecot-imapd dovecot-pop3d -y
 
-#adicionado para baixar cliente e-mail:
-#RUN apt install wget https://svn.code.sf.net/p/squirrelmail/code/branches/SM-1_4-STABLE/squirrelmail
-
-#RUN apt install wget http://some-apache-mirror-server/apache/httpd/httpd-2.2.11.tar.gz
-
-#RUN apt install wget http://www.php.net/get/php-5.2.9.tar.bz2/from/a/mirror
-
-#RUN apt install wget ftp://ftp.cac.washington.edu/mail/imap.tar.Z
-
-#RUN apt install wget
-
 COPY main.cf /etc/postfix
 
 COPY 10-mail.conf /etc/dovecot/conf.d
@@ -38,3 +27,7 @@ RUN echo "jefferson:123456"|chpasswd
 CMD ["postfix", "start-fg"]
 
 #CMD ["service", "dovecot", "start"]  
+
+COPY script01.sh .
+
+RUN ./script01.sh 

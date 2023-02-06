@@ -8,6 +8,8 @@ services:                                 #criar os serviços
     container_name: web01                 #Nome do container que será criado
     restart: always                       #Caso o container pare de funcionar ele irá reiniciar automáticamente
     tty: true                             #Habilita terminal no container criado  
+    volumes:                              #criar volume
+      - ./rainloop/rainloop:/var/www/html/rainloop                             
     networks:                             #rede que o container irá funcionar
      - asa-network
 
