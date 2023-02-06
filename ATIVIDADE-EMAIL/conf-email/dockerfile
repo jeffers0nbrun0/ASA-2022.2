@@ -1,10 +1,10 @@
-FROM ubuntu:20.04
+FROM ubuntu:21.04
 
 RUN apt update
 
-RUN apt upgrade -y
+#RUN apt upgrade -y
 
-RUN apt install postfix nano dnsutils wget iputils-ping telnet dovecot-common dovecot-imapd dovecot-pop3d -y
+RUN apt-get install -y postfix nano dnsutils wget iputils-ping telnet dovecot-common dovecot-imapd dovecot-pop3d 
 
 COPY main.cf /etc/postfix
 
@@ -24,12 +24,8 @@ RUN useradd -c 'jefferson' -m -s /bin/false jefferson
 
 RUN echo "jefferson:123456"|chpasswd
 
-CMD ["postfix", "start-fg"]
+COPY start_service.sh .
 
-#CMD ["service", "dovecot", "start"]  
+RUN chmod +x start_service.sh
 
-COPY script01.sh .
-
-#CMD ["chmod", "777", "script01"]
-
-#RUN ./script01.sh 
+ENTRYPOINT ["./start_service.sh"]
