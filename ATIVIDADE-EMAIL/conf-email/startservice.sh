@@ -1,7 +1,5 @@
 #!/bin/bash
 echo "iniciando postfix"
-postfix start-fg
-
+/etc/init.d/postfix restart
 echo "iniciando dovecot"
-service dovecot start  
-
+/etc/init.d/dovecot restart 

@@ -1,15 +1,11 @@
-FROM debian:buster
+FROM ubuntu:focal
 
-RUN apt-get update && apt-get install apache2 apache2-utils squirrelmail libapache2-mod-php php php-cli php-curl php-xml php-imap nano -y
+RUN apt update && apt install -y nginx 
 
-RUN apt-get upgrade -y
+RUN apt upgrade -y
 
-#COPY ./rainloop /usr/share/nginx/html/
+COPY install_squirrelmail.sh . 
 
-#COPY script02.sh .
+RUN chmod +x install_squirrelmail.sh
 
-#RUN service apache2 start 
-
-#RUN chmod 777 script02
-
-#RUN ./script02.sh
+#ENTRYPOINT ["./install_squirrelmail.sh"] 

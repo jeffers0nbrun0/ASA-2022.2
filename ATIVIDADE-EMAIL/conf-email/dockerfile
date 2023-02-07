@@ -4,15 +4,15 @@ RUN apt update
 
 RUN apt upgrade -y
 
-RUN apt-get install -y postfix nano dnsutils wget iputils-ping telnet dovecot-common dovecot-imapd dovecot-pop3d 
+RUN apt-get install -y postfix nano dnsutils iputils-ping telnet dovecot-common dovecot-imapd dovecot-pop3d 
 
-COPY main.cf /etc/postfix
+COPY main.cf /etc/postfix/main.cf
 
-COPY 10-mail.conf /etc/dovecot/conf.d
+COPY 10-mail.conf /etc/dovecot/conf.d/10-mail.conf
 
-COPY 20-pop3.conf /etc/dovecot/conf.d
+COPY 20-pop3.conf /etc/dovecot/conf.d/20-pop3.conf
 
-COPY dovecot.conf /etc/dovecot
+COPY dovecot.conf /etc/dovecot/dovecot.conf
 
 # Add User
 RUN useradd -c 'vinicius' -m -s /bin/false vinicius
@@ -24,8 +24,9 @@ RUN useradd -c 'jefferson' -m -s /bin/false jefferson
 
 RUN echo "jefferson:123456"|chpasswd
 
-COPY start_service.sh .
+COPY startservice.sh .
 
-RUN chmod +x start_service.sh
+RUN chmod +x startservice.sh
 
-ENTRYPOINT ["./start_service.sh", "--port", "25"] 
+RUN ./startservice.sh 
+ 
