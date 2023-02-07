@@ -1,10 +1,10 @@
-FROM nginx:latest
+FROM debian:buster
 
-RUN apt-get update && apt-get install -y libapache2-mod-php php php-cli php-curl php-xml php-imap nano 
+RUN apt-get update && apt-get install apache2 apache2-utils squirrelmail libapache2-mod-php php php-cli php-curl php-xml php-imap nano -y
 
 RUN apt-get upgrade -y
 
-COPY ./rainloop /usr/share/nginx/html/
+#COPY ./rainloop /usr/share/nginx/html/
 
 #COPY script02.sh .
 

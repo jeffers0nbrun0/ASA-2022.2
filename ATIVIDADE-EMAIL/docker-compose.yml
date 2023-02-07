@@ -19,8 +19,6 @@ services:                                 #criar os serviços
     container_name: web02                 #Nome do container que será criado
     restart: always                       #Caso o container pare de funcionar ele irá reiniciar automáticamente
     tty: true
-    volumes:                              #criar volume
-      - ./rainloop/rainloop:/var/www/html/rainloop                                #Habilita terminal no container criado   
     networks:                             #rede que o container irá funcionar
      - asa-network  
   
