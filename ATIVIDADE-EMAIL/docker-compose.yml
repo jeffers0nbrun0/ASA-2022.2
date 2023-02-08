@@ -24,8 +24,8 @@ services:                                 #criar os serviços
   
   web03: 
     build:                                #Vai criar as configurações definidas de um dockerfile
-      context: ./conf-web03               #busca dentro da pasta "conf-web01"
-      dockerfile: Dockerfile              #seleciona o arquivo dockerfile com as informações do container
+     context: ./conf-web03               #busca dentro da pasta "conf-web01"
+     dockerfile: Dockerfile              #seleciona o arquivo dockerfile com as informações do containe
     image: web03                          #Imagem do servidor Docker        
     container_name: web03                 #Nome do container que será criado
     restart: always                       #Caso o container pare de funcionar ele irá reiniciar automáticamente
@@ -72,10 +72,29 @@ services:                                 #criar os serviços
     restart: always                       #Caso o container pare de funcionar ele irá reiniciar automáticamente
     tty: true                             #Habilita terminal no container criado  
     ports:                                #porta que o container irá executar 
-     - "2525:25/tcp"                      #"53" porta tcp do host, "53" porta tcp do container  
+     - "2525:25/tcp"                      #"2525" porta tcp do host, "25" porta tcp do container  
     networks:                             #rede que o container irá funcionar
-     - asa-network      
-           
+     - asa-network
+
+  webmail:
+    image: roundcube/roundcubemail:latest
+    container_name: webmail       
+    restart: always
+    volumes:
+      - ./www:/var/www/html
+      - ./db/sqlite:/var/roundcube/db
+    ports:
+      - 9002:80
+    environment:
+      - ROUNDCUBEMAIL_DB_TYPE=sqlite
+      - ROUNDCUBEMAIL_SKIN=elastic
+      - ROUNDCUBEMAIL_DEFAULT_HOST=//asa.br
+      - ROUNDCUBEMAIL_SMTP_SERVER=//mail.asa.br
+      - ROUNDCUBEMAIL_SMTP_PORT= 25
+    networks:                            #Criar rede do container
+      asa-network:                       #tipo da rede
+
+
 #DOCKER Networks 
 networks:                                #Criar rede do container
   asa-network:                           #nome da rede  

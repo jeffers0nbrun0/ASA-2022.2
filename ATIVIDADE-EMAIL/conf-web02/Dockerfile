@@ -1,11 +1,4 @@
-FROM ubuntu:focal
-
-RUN apt update && apt install -y nginx 
-
-RUN apt upgrade -y
-
-COPY install_squirrelmail.sh . 
-
-RUN chmod +x install_squirrelmail.sh
-
-#ENTRYPOINT ["./install_squirrelmail.sh"] 
+FROM nginx:latest
+COPY index.html /usr/share/nginx/html/index.html
+COPY nginx.conf /etc/gninx/nginx.conf
+COPY default.conf /etc/nginx/conf.d/default.conf

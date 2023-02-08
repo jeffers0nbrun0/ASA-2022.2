@@ -24,9 +24,7 @@ RUN useradd -c 'jefferson' -m -s /bin/false jefferson
 
 RUN echo "jefferson:123456"|chpasswd
 
-COPY startservice.sh .
+COPY startservice.sh /shell/startservice.sh
 
-RUN chmod +x startservice.sh
-
-RUN ./startservice.sh 
+ENTRYPOINT [ "/shell/startservice.sh" ] 
  
