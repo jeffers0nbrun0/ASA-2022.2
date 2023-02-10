@@ -30,6 +30,8 @@ services:                                 #criar os serviços
     container_name: web03                 #Nome do container que será criado
     restart: always                       #Caso o container pare de funcionar ele irá reiniciar automáticamente
     tty: true                             #Habilita terminal no container criado  
+    volumes:
+      - ./conf-web03/rainloop:/var/www/html/rainloop
     networks:                             #rede que o container irá funcionar
      - asa-network
 
@@ -58,7 +60,7 @@ services:                                 #criar os serviços
     tty: true                             #Habilita terminal no container criado  
     ports:                                #porta que o container irá executar 
      - "53:53/tcp"                        #"53" porta tcp do host, "53" porta tcp do container
-     - "53:53/udp"                        #"53" porta udp do host, "53" porta udp do container 
+     - "53:53/udp"                         #"53" porta udp do host, "53" porta udp do container 
     networks:                             #rede que o container irá funcionar
      - asa-network
 
@@ -72,27 +74,36 @@ services:                                 #criar os serviços
     restart: always                       #Caso o container pare de funcionar ele irá reiniciar automáticamente
     tty: true                             #Habilita terminal no container criado  
     ports:                                #porta que o container irá executar 
-     - "2525:25/tcp"                      #"2525" porta tcp do host, "25" porta tcp do container  
+     - "25:25/tcp"                        #"25" porta tcp do host, "25" porta tcp do container                       
+     - "100:100/tcp"
+     - "143:143/tcp"
+     - "587:587/tcp"
+     - "993:993/tcp"
+     - "995:995/tcp"
     networks:                             #rede que o container irá funcionar
      - asa-network
-
-  webmail:
-    image: roundcube/roundcubemail:latest
-    container_name: webmail       
-    restart: always
-    volumes:
-      - ./www:/var/www/html
-      - ./db/sqlite:/var/roundcube/db
-    ports:
-      - 9002:80
-    environment:
-      - ROUNDCUBEMAIL_DB_TYPE=sqlite
-      - ROUNDCUBEMAIL_SKIN=elastic
-      - ROUNDCUBEMAIL_DEFAULT_HOST=//asa.br
-      - ROUNDCUBEMAIL_SMTP_SERVER=//mail.asa.br
-      - ROUNDCUBEMAIL_SMTP_PORT= 25
-    networks:                            #Criar rede do container
-      asa-network:                       #tipo da rede
+  
+  
+  #Outro serviço de webmail funcionando
+  #webmail:
+   # image: roundcube/roundcubemail:latest
+    #container_name: webmail       
+    #restart: always
+    #volumes:
+    #  - ./www:/var/www/html
+    #  - ./db/sqlite:/var/roundcube/db
+    #ports:
+     # - 9002:80
+    #environment:
+     # - ROUNDCUBEMAIL_DB_TYPE=sqlite
+      #- ROUNDCUBEMAIL_SKIN=elastic
+      #- ROUNDCUBEMAIL_DEFAULT_HOST=//asa.br
+      #- ROUNDCUBEMAIL_SMTP_SERVER=//mail.asa.br
+      #- ROUNDCUBEMAIL_SMTP_PORT=25
+      #- ROUNDCUBEMAIL_DB_USER=jefferson
+      #- ROUNDCUBEMAIL_DB_PASSWORD=123456
+    #networks:                            #Criar rede do container
+     # asa-network:                       #tipo da rede
 
 
 #DOCKER Networks 
