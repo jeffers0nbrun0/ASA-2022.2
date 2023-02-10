@@ -2,7 +2,7 @@
 
 ### Finalidade:
 
-Repositório para o projeto final da disciplina ASA, como arquivos de configuração. Para implementação dos serviços DNS, PROXY, PÁGINA WEB, SERVIDOR DE EMAIL E WEBMAIL na infraestrutura de containers Docker.
+Repositório para o projeto final da disciplina ASA, como arquivos de configuração para implementação dos serviços DNS, PROXY, PÁGINA WEB, SERVIDOR DE EMAIL E WEBMAIL na infraestrutura de containers Docker.
 
 ###### Para obter o repositório na sua máquina:
 
