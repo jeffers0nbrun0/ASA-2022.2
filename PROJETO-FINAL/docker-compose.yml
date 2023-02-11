@@ -21,19 +21,6 @@ services:                                 #criar os serviços
     tty: true
     networks:                             #rede que o container irá funcionar
      - asa-network  
-  
-  web03: 
-    build:                                #Vai criar as configurações definidas de um dockerfile
-     context: ./conf-web03               #busca dentro da pasta "conf-web01"
-     dockerfile: Dockerfile              #seleciona o arquivo dockerfile com as informações do containe
-    image: web03                          #Imagem do servidor Docker        
-    container_name: web03                 #Nome do container que será criado
-    restart: always                       #Caso o container pare de funcionar ele irá reiniciar automáticamente
-    tty: true                             #Habilita terminal no container criado  
-    volumes:
-      - ./conf-web03/rainloop:/var/www/html/rainloop
-    networks:                             #rede que o container irá funcionar
-     - asa-network
 
   proxy: 
     build:                                #Vai criar as configurações definidas de um dockerfile
@@ -73,6 +60,8 @@ services:                                 #criar os serviços
     hostname: mail.asa.br
     restart: always                       #Caso o container pare de funcionar ele irá reiniciar automáticamente
     tty: true                             #Habilita terminal no container criado  
+    volumes:
+      - ./conf-email/rainloop:/var/www/html/rainloop
     ports:                                #porta que o container irá executar 
      - "25:25/tcp"                        #"25" porta tcp do host, "25" porta tcp do container                       
      - "100:100/tcp"

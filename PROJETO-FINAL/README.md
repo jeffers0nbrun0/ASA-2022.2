@@ -39,7 +39,7 @@ OBS: Lembrando que para dar o comando informado acima vc precisa está na pasta 
 
 #### WEBMAIL - RAINLOOP:
 
-- Para a ambientação ao servidor de Webmail, que irá receber as configurações do dns e do servidor de configurações de email, está sendo utilizado o Webmail Rainloop. Para mais detalhes das configurações entre na pasta __CONF-WEB03__.
+- Para a ambientação ao servidor de Webmail, que irá receber as configurações do dns e do servidor de configurações de email, está sendo utilizado o Webmail Rainloop. Para mais detalhes das configurações entre na pasta __CONF-EMAIL__.
 
 #### PROXY - NGINX:
 

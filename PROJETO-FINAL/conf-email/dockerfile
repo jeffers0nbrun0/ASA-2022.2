@@ -2,7 +2,9 @@ FROM ubuntu:20.04
 
 RUN apt update
 
-RUN apt-get install -y postfix nano dnsutils iputils-ping telnet dovecot-common dovecot-core dovecot-imapd dovecot-pop3d 
+RUN apt-get install -y postfix dnsutils iputils-ping telnet dovecot-common dovecot-core dovecot-imapd dovecot-pop3d 
+
+RUN apt-get install -y apache2 apache2-utils libapache2-mod-php php php-cli php-curl php-xml php-imap nano net-tools
 
 RUN apt upgrade -y
 
